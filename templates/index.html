@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Resume Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="container">
+      <section class="hero-card glass-card">
+        <p class="eyebrow">AI RESUME ANALYZER</p>
+        <h1>ATS Score, Job Match and Chat Assistant</h1>
+        <p class="subtext">
+          Upload your PDF resume to get ATS-style scoring, job-role matching,
+          missing skills, improvement tips, and chatbot help.
+        </p>
+
+        <div class="upload-row">
+          <input type="file" id="resumeFile" accept=".pdf" />
+          <button id="analyzeBtn">Analyze Resume</button>
+        </div>
+
+        <p id="statusMsg" class="status-msg"></p>
+      </section>
+
+      <div id="resultsSection" class="hidden">
+        <section class="card dark-card score-card">
+          <p class="eyebrow">ATS SCORE</p>
+          <h2>Resume Score</h2>
+
+          <div class="score-layout">
+            <div class="score-circle-wrap">
+              <div class="score-circle" id="scoreCircle">
+                <span id="scoreValue">0%</span>
+              </div>
+            </div>
+
+            <div class="score-info">
+              <h3 id="scoreLabel">-</h3>
+
+              <div class="progress-track dark-track">
+                <div class="progress-fill" id="scoreBar"></div>
+              </div>
+
+              <p id="wordCountText" class="muted-text"></p>
+              <p id="fileInfoText" class="muted-text"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card light-card">
+          <p class="eyebrow">BEST MATCH</p>
+          <h2>Top Job Role</h2>
+
+          <div class="best-role-box">
+            <div>
+              <p class="badge">BEST MATCH</p>
+              <h3 id="bestRole">-</h3>
+            </div>
+
+            <div class="match-score-box">
+              <span id="bestMatchScore">0%</span>
+              <p>match score</p>
+            </div>
+          </div>
+
+          <div class="match-list">
+            <h4>All Job Matches</h4>
+            <div id="allMatchesContainer"></div>
+          </div>
+        </section>
+
+        <div class="grid-2">
+          <section class="card light-card">
+            <p class="eyebrow">FOUND IN RESUME</p>
+            <h2>Detected Skills</h2>
+            <div id="skillsContainer" class="tag-container"></div>
+          </section>
+
+          <section class="card light-card">
+            <p class="eyebrow">SKILL GAPS</p>
+            <h2>Missing Skills</h2>
+            <div id="missingSkillsContainer" class="tag-container"></div>
+          </section>
+        </div>
+
+        <section class="card light-card tip-card">
+          <p class="eyebrow">AI RECOMMENDATIONS</p>
+          <h2>Improvement Tips</h2>
+          <ul id="suggestionsList" class="suggestion-list"></ul>
+        </section>
+
+        <section class="card light-card chatbot-card">
+          <p class="eyebrow">CHAT ASSISTANT</p>
+          <h2>Ask About Your Resume</h2>
+
+          <div id="chatBox" class="chat-box">
+            <div class="bot-message">
+              Hi. Analyze your resume first, then ask me things like “How can I improve my resume?” or “What skills are missing?”
+            </div>
+          </div>
+
+          <div class="chat-input-row">
+            <input
+              type="text"
+              id="chatInput"
+              placeholder="Ask something about your resume..."
+            />
+            <button id="sendChatBtn">Send</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
